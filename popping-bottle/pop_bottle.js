@@ -1,3 +1,5 @@
+const amount = process.argv[2];
+console.log(amount);
 
 const purchasePop = (amount) => {
   return Math.floor(amount / 2);
@@ -28,10 +30,10 @@ const totalPop = (amount) => {
   return total + intPop;
 }
 
-console.log(totalPop(0));
-console.log(totalPop(1));
-console.log(totalPop(2));
-console.log(totalPop(4));
-console.log(totalPop(6));
-console.log(totalPop(10));
-console.log(totalPop(20));
+// console.log(totalPop(0));
+// console.log(totalPop(1));
+// console.log(totalPop(2));
+// console.log(totalPop(4));
+// console.log(totalPop(6));
+// console.log(totalPop(10));
+console.log("number of ultimate pop bottles bought with ", amount, "dollars: ", totalPop(amount));
