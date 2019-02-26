@@ -1,3 +1,13 @@
+// Poppin' Bottles
+
+// You've just been hired at Lighthouse Markets, a reputable (and thoroughly fictional) grocery store chain. One of the primary features of Lighthouse Markets is their recycling program on pop bottles. Here is how the program works:
+
+//     For every two empty bottles, you can get one free (full) bottle of pop
+//     For every four bottle caps, you can get one free (full) bottle of pop
+//     Each bottle of pop costs $2 to purchase
+
+// Given these parameters, write a program so that you can figure out how many total bottles of pop can be redeemed given a customer investment.
+
 const amount = parseInt(process.argv[2]);
 
 const purchasePop = (amount) => { //returns nr of pop bottles bought with an amount of money or empty bottles
@@ -12,9 +22,14 @@ let result = {};
 result.total = 0;
 result.recycled = 0;
 result.caps = 0;
+result.remainingBottles = 0;
+result.remainingCaps = 0;
 
 const ultPop = (amount, emptyBottles, caps) => {
+
   if ((amount + emptyBottles < 2) && (amount + caps < 4 )) {
+    result.remainingBottles = amount + emptyBottles;
+    result.remainingCaps = amount + caps;
     return result;
   }
 
@@ -26,7 +41,6 @@ const ultPop = (amount, emptyBottles, caps) => {
   caps = (amount + caps) % 4;
   amount = int;
   ultPop(amount, emptyBottles, caps);
-
   return result;
 }
 
@@ -41,6 +55,9 @@ const totalPop = (amount) => {
 
 totalPop(amount);
 
-console.log('TOTAL BOTTLES: ', result.total,'\n','TOTAL EARNED: ' + '\n',
+console.log('TOTAL BOTTLES: ', result.total,'\n',
+            'REMAINING BOTTLES: ', result.remainingBottles,'\n',
+            'REMAINING CAPS: ', result.remainingCaps,'\n',
+            'TOTAL EARNED: ' + '\n',
             '  BOTTLES: ' + result.recycled + '\n',
             '  CAPS: ', result.caps);
